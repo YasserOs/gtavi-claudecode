@@ -123,7 +123,7 @@ def even(n):
     return int(n) // 2 * 2
 
 
-def video_filter(layout, cam, ass, band=None, cam_side='right', src=None, game_x=None, face_expr=None):
+def video_filter(layout, cam, ass, band=None, cam_side='right', src=None, game_x=None, face_expr=None, game_fit=False):
     """Layout + burned-caption filter graph ending in [vo]. Reused by translate.py."""
     if layout == "fill":
         v = f"[0:v]scale=-2:{H},crop={W}:{H}[v]"
@@ -132,6 +132,7 @@ def video_filter(layout, cam, ass, band=None, cam_side='right', src=None, game_x
              f"[b]scale={W}:-2[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2-80[v]")
     elif layout == 'react':
         sw, sh = src
+        cam_hide = ""
         if face_expr:  # tracked face crop (no cam frame)
             cw, chh, ex, ey = face_expr
             top = f"crop={cw}:{chh}:{ex}:{ey}"
@@ -139,10 +140,19 @@ def video_filter(layout, cam, ass, band=None, cam_side='right', src=None, game_x
             x, y, w, h = map(float, cam.split(':'))
             cw, chh = even(sw * w), even(sh * h)
             top = f"crop={cw}:{chh}:{even(sw * x)}:{even(sh * y)}"
+            # delogo box for game-fit: hide the webcam so it is not shown twice (kept strictly inside the frame)
+            dx, dy = max(2, even(sw * x)), max(2, even(sh * y))
+            dw, dh = min(cw + 4, sw - dx - 2), min(chh + 4, sh - dy - 2)
+            cam_hide = f"delogo=x={dx}:y={dy}:w={dw}:h={dh},"
         gw = even(sw * GAME_H / sh) if sw * GAME_H / sh >= W else W
         gx = game_x if game_x is not None else ((gw - W) if cam_side == 'left' else 0)
-        v = (f"[0:v]split[a][b];[a]{top},scale={W}:{TOP}:force_original_aspect_ratio=increase,crop={W}:{TOP},setsar=1[cam];"
-             f"[b]scale={gw}:{GAME_H},crop={W}:{GAME_H}:{even(gx)}:0,setsar=1[game];[cam][game]vstack[v]")
+        if game_fit:  # whole game width: 16:9 game fitted to the 1080 px width over a blurred copy of itself
+            v = (f"[0:v]split=3[a][b][c];[a]{top},scale={W}:{TOP}:force_original_aspect_ratio=increase,crop={W}:{TOP},setsar=1[cam];"
+                 f"[c]scale={W}:{GAME_H}:force_original_aspect_ratio=increase,crop={W}:{GAME_H},boxblur=30:3,eq=brightness=-0.12[bg];"
+                 f"[b]{cam_hide}scale={W}:-2,setsar=1[fg];[bg][fg]overlay=0:({GAME_H}-h)/2[game];[cam][game]vstack[v]")
+        else:
+            v = (f"[0:v]split[a][b];[a]{top},scale={W}:{TOP}:force_original_aspect_ratio=increase,crop={W}:{TOP},setsar=1[cam];"
+                 f"[b]scale={gw}:{GAME_H},crop={W}:{GAME_H}:{even(gx)}:0,setsar=1[game];[cam][game]vstack[v]")
         if band:
             y0, bh, secs = band
             en = f":enable='lte(t,{secs})'" if secs > 0 else ''
@@ -208,6 +218,7 @@ def main():
     ap.add_argument("--hook", default="")
     ap.add_argument("--allow-profanity", action="store_true", help="keep swear words in captions (slurs are always masked)")
     ap.add_argument("--cam", default="auto", help="auto (find the webcam) or x:y:w:h fractions")
+    ap.add_argument("--game-fit", action="store_true", help="react layout: show the WHOLE game width (16:9 fitted under the face panel, blurred fill) instead of cropping the sides")
     ap.add_argument("--face-h", type=int, default=0, help="react layout: height in px of the streamer panel on top (default 730 of 1920; smaller = more game, e.g. 480)")
     ap.add_argument("--start", type=float); ap.add_argument("--end", type=float)
     a = ap.parse_args()
@@ -256,6 +267,8 @@ def main():
     elif layout in ('react', 'facecam') and cam != 'auto':
         side = 'left' if float(cam.split(':')[0]) + float(cam.split(':')[2]) / 2 < 0.5 else 'right'
     cap_y = CAP_Y[layout]
+    if layout == 'react' and a.game_fit:
+        cap_y = H - 150  # captions below the fitted game strip
     title, band = None, None
     if a.title and layout == 'react':
         n = len(wrap(a.title, 26 if a.title_style == 'box' else 24))
@@ -274,8 +287,8 @@ def main():
         from common import ffprobe
         vs = [x for x in ffprobe(c['source'])['streams'] if x.get('codec_type') == 'video'][0]
         src = (int(vs['width']), int(vs['height']))
-        gx = game_offset(c['source'], s0, e0, src, [float(t) for t in cam.split(':')])
-    v = video_filter(layout, cam, ass, band=band, cam_side=side, src=src, game_x=gx, face_expr=face_expr)
+        gx = None if a.game_fit else game_offset(c['source'], s0, e0, src, [float(t) for t in cam.split(':')])
+    v = video_filter(layout, cam, ass, band=band, cam_side=side, src=src, game_x=gx, face_expr=face_expr, game_fit=a.game_fit)
     mp4 = out / f"clip_{a.pick}.mp4"
     run([tool("ffmpeg"), "-y", "-v", "error", "-ss", f"{s0:.2f}", "-to", f"{e0:.2f}", "-i", c["source"],
          "-filter_complex", v, "-map", "[vo]", "-map", "0:a?", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11",
