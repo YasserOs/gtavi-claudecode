@@ -21,10 +21,13 @@ edges{node{slug title viewCount durationSeconds createdAt broadcaster{login disp
 
 def top(game, period, lang, limit):
     d = twitch.gql(Q, {"n": game, "p": period, "l": [lang] if lang else None, "k": int(limit)})
+    if int(limit) <= 0:
+        return []
     g = (d.get("data") or {}).get("game")
     if not g:
         sys.exit(f"no clips returned: {str(d.get('errors') or d)[:200]}")
-    return [e["node"] for e in g["clips"]["edges"]]
+    edges = ((g.get("clips") or {}).get("edges")) or []   # Twitch returns clips=null for some limits / throttled calls
+    return [e["node"] for e in edges if e and e.get("node")]
 
 
 def main():
