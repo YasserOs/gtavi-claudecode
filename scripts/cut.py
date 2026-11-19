@@ -197,6 +197,7 @@ def game_offset(video, s0, e0, src, cam_box):
 
 
 def main():
+    global TOP, GAME_H
     ap = argparse.ArgumentParser()
     ap.add_argument("job"); ap.add_argument("--pick", type=int, default=1)
     ap.add_argument("--layout", choices=["fill", "blur", "facecam", "react"], default="blur")
@@ -207,8 +208,11 @@ def main():
     ap.add_argument("--hook", default="")
     ap.add_argument("--allow-profanity", action="store_true", help="keep swear words in captions (slurs are always masked)")
     ap.add_argument("--cam", default="auto", help="auto (find the webcam) or x:y:w:h fractions")
+    ap.add_argument("--face-h", type=int, default=0, help="react layout: height in px of the streamer panel on top (default 730 of 1920; smaller = more game, e.g. 480)")
     ap.add_argument("--start", type=float); ap.add_argument("--end", type=float)
     a = ap.parse_args()
+    if a.face_h:
+        TOP = even(max(320, min(1000, a.face_h))); GAME_H = H - TOP
     d = Path(a.job); c = load_json(d / "candidates.json")
     pick = next(x for x in c["candidates"] if x["n"] == a.pick)
     s0 = a.start if a.start is not None else pick["start"]; e0 = a.end if a.end is not None else pick["end"]
