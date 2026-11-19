@@ -141,8 +141,8 @@ class Recorder:
         cmd = [tool("ffmpeg"), "-y", "-loglevel", "warning"]
         for u in urls:
             cmd += ["-reconnect", "1", "-reconnect_streamed", "1", "-reconnect_delay_max", "5", "-i", u]
-        for i in range(len(urls)):
-            cmd += ["-map", str(i)]
+        for i in range(len(urls)):  # video and audio only: Twitch's timed-ID3 data track has jumping timestamps that kill the muxer
+            cmd += ["-map", f"{i}:v?", "-map", f"{i}:a?"]
         cmd += ["-c", "copy", "-t", str(int(minutes * 60)), "-f", "segment", "-segment_time", "60",
                 "-segment_format", "mpegts", "-reset_timestamps", "1", "-segment_list", str(self.csv),
                 "-segment_list_type", "csv", str(ld / "seg_%05d.ts")]
