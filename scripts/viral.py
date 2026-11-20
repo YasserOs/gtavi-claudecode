@@ -21,14 +21,15 @@ LOGINS = ("kaicenat ishowspeed ludwig hasanabi sodapoppin pokimane mizkif esfand
           "trainwreckstv adinross stableronaldo caseoh_ jasontheween jinnytty squeex theburntpeanut penta sixdadon87 piratesoftware "
           "xqc hutchmf nickeh30 loserfruit kyedae_ fuslie lilypichu extraemily").split()
 BAD = re.compile(r"(?i)gyat+|mandy|girlfriend|nude|naked|strip|club|stepbro|booty|thot|sex|shower|bikini|ass\b|tits|nsfw|18\+|onlyfans|n[i1]gg|bed\b")
-Q = """query($l:String!){user(login:$l){clips(first:40,criteria:{period:LAST_WEEK,sort:VIEWS_DESC}){edges{node{slug title viewCount durationSeconds game{name}}}}}}"""
+Q = """query($l:String!){user(login:$l){clips(first:40,criteria:{period:PERIOD,sort:VIEWS_DESC}){edges{node{slug title viewCount durationSeconds game{name}}}}}}"""
 
 
-def collect(min_secs, game="Grand Theft Auto VI"):
+def collect(min_secs, game="Grand Theft Auto VI", period="LAST_WEEK"):
     rows = []
+    q = Q.replace("PERIOD", period)
     for l in LOGINS:
         try:
-            d = twitch.gql(Q, {"l": l})
+            d = twitch.gql(q, {"l": l})
         except Exception:
             continue
         edges = (((d.get("data") or {}).get("user") or {}).get("clips") or {}).get("edges") or []
@@ -43,10 +44,11 @@ def collect(min_secs, game="Grand Theft Auto VI"):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--min-secs", type=float, default=25)
+    ap.add_argument("--period", default="LAST_WEEK", choices=["LAST_DAY", "LAST_WEEK", "LAST_MONTH"])
     ap.add_argument("--limit", type=int, default=30)
     ap.add_argument("--download", default="", help="comma-separated row numbers to download into jobs/viral/")
     a = ap.parse_args()
-    rows = collect(a.min_secs)[: a.limit]
+    rows = collect(a.min_secs, period=a.period)[: a.limit]
     for i, r in enumerate(rows, 1):
         print(f"{i:>2} {r['views']:>7} {r['secs']:>3.0f}s {r['login']:<14} {r['title'][:46]:<46} {r['slug']}")
     out = Path("jobs") / "viral"
