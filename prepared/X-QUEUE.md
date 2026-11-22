@@ -1,5 +1,4 @@
 # X backlog (post ~1 per hourly run, max 3/day; xqc-atv-cows and fuslie-seaplane-legend already posted)
-lirik-dog-jetski
 squeex-bike-trick-wasted
 xqc-biggest-crash
 caseoh-bmx-looks

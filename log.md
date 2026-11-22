@@ -36,3 +36,4 @@
 | Nov 22 03:44 | Summit1g (twitch.tv/summit1g) | X: seaplane barrel roll (plain credit) | n/a | n/a | n/a | X posted (3rd X post; today's X cap reached) |
 | Nov 22 11:22 | ohnePixel (twitch.tv/ohnepixel) | ohnePixel rides off on a mobility scooter in GTA 6 (25 s, source Twitch clip ThankfulSoftKoupreyOMGScoots, title visual only) | posted (plain-text credit) | n/a | youtube.com/shorts/0L6M9VQj7CE (public) |
 | Nov 22 11:22 | Jinnytty (twitch.tv/jinnytty_) | Jinnytty checks out a pet snake in GTA 6 (30 s; quote 'oh that's so realistic' in description checked earlier) | posted (plain-text credit) | n/a | YouTube public |
+| Nov 23 ~01:50 | Lirik (twitch.tv/lirik) | X: dog riding a jet ski (plain credit) | n/a | n/a | n/a | X posted (1st X post of Nov 23) |
