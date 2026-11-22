@@ -32,3 +32,4 @@
 | 2026-11-21 ~23:05 | Summit1g (TikTok @summit1ggg 130.1K, YT @summit1g) | Summit1g does a barrel roll in a seaplane in GTA 6 (34s, Twitch clip summit1g/InterestingBoringParrotRaccAttack-44_in8PCGKnwVnPT; "barrel roll" in transcript, roll visible in frames) | tiktok.com/@wreckwavefm (posted) | REMOVED | youtube.com/shorts (public) |
 | 2026-11-21 ~23:00 | (skipped) | loserfruit "Fat Jason Steps": shirtless NPC close-up; jasontheween "JTW'S REACTION": gore (corpses in convertible); jasontheween "owned by an NPC", caseoh "kyle" series: not picked (tiny cam / long heist chatter) | - | - | - |
 | Nov 22 01:28 | xQc (twitch.tv/xqc) | X first post: ATV through a cow pasture (credit line in caption; no tag) | n/a | n/a | n/a | X: posted @WreckWaveFM; platform pool now TikTok + YouTube + X |
+| Nov 22 02:42 | Fuslie (twitch.tv/fuslie) | X: seaplane 'I'm a legend' (credit in caption) | n/a | n/a | n/a | X posted |
