@@ -34,3 +34,5 @@
 | Nov 22 01:28 | xQc (twitch.tv/xqc) | X first post: ATV through a cow pasture (credit line in caption; no tag) | n/a | n/a | n/a | X: posted @WreckWaveFM; platform pool now TikTok + YouTube + X |
 | Nov 22 02:42 | Fuslie (twitch.tv/fuslie) | X: seaplane 'I'm a legend' (credit in caption) | n/a | n/a | n/a | X posted |
 | Nov 22 03:44 | Summit1g (twitch.tv/summit1g) | X: seaplane barrel roll (plain credit) | n/a | n/a | n/a | X posted (3rd X post; today's X cap reached) |
+| Nov 22 11:22 | ohnePixel (twitch.tv/ohnepixel) | ohnePixel rides off on a mobility scooter in GTA 6 (25 s, source Twitch clip ThankfulSoftKoupreyOMGScoots, title visual only) | posted (plain-text credit) | n/a | youtube.com/shorts/0L6M9VQj7CE (public) |
+| Nov 22 11:22 | Jinnytty (twitch.tv/jinnytty_) | Jinnytty checks out a pet snake in GTA 6 (30 s; quote 'oh that's so realistic' in description checked earlier) | posted (plain-text credit) | n/a | YouTube public |
