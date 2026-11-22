@@ -33,3 +33,4 @@
 | 2026-11-21 ~23:00 | (skipped) | loserfruit "Fat Jason Steps": shirtless NPC close-up; jasontheween "JTW'S REACTION": gore (corpses in convertible); jasontheween "owned by an NPC", caseoh "kyle" series: not picked (tiny cam / long heist chatter) | - | - | - |
 | Nov 22 01:28 | xQc (twitch.tv/xqc) | X first post: ATV through a cow pasture (credit line in caption; no tag) | n/a | n/a | n/a | X: posted @WreckWaveFM; platform pool now TikTok + YouTube + X |
 | Nov 22 02:42 | Fuslie (twitch.tv/fuslie) | X: seaplane 'I'm a legend' (credit in caption) | n/a | n/a | n/a | X posted |
+| Nov 22 03:44 | Summit1g (twitch.tv/summit1g) | X: seaplane barrel roll (plain credit) | n/a | n/a | n/a | X posted (3rd X post; today's X cap reached) |
