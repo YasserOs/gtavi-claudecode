@@ -37,3 +37,4 @@
 | Nov 22 11:22 | ohnePixel (twitch.tv/ohnepixel) | ohnePixel rides off on a mobility scooter in GTA 6 (25 s, source Twitch clip ThankfulSoftKoupreyOMGScoots, title visual only) | posted (plain-text credit) | n/a | youtube.com/shorts/0L6M9VQj7CE (public) |
 | Nov 22 11:22 | Jinnytty (twitch.tv/jinnytty_) | Jinnytty checks out a pet snake in GTA 6 (30 s; quote 'oh that's so realistic' in description checked earlier) | posted (plain-text credit) | n/a | YouTube public |
 | Nov 23 ~01:50 | Lirik (twitch.tv/lirik) | X: dog riding a jet ski (plain credit) | n/a | n/a | n/a | X posted (1st X post of Nov 23) |
+| Nov 23 ~02:10 | NICKMERCS (twitch.tv/nickmercs) | NICKMERCS blames the car during a GTA 6 police chase (20 s, live stream Nov 19) | posted (plain-text credit; under review) | n/a | youtube.com/shorts/yAucxtyZXI (public) |
