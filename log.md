@@ -40,3 +40,4 @@
 | Nov 23 ~02:10 | NICKMERCS (twitch.tv/nickmercs) | NICKMERCS blames the car during a GTA 6 police chase (20 s, live stream Nov 19) | posted (plain-text credit; under review) | n/a | youtube.com/shorts/yAucxtyZXI (public) |
 | Nov 23 ~02:35 | Squeex (twitch.tv/squeex) | X: bike trick ends in Wasted (plain credit) | n/a | n/a | n/a | X posted (2nd X post of Nov 23) |
 | Nov 23 ~02:45 | Squeex (twitch.tv/squeex) | Squeex tries to evade the cops in GTA 6 (23 s, live stream Nov 19) | posted (plain-text credit; under review) | n/a | youtube.com/shorts/VlzfkT6CH_0 (public) |
+| Nov 23 ~03:10 | IShowSpeed (twitch.tv/ishowspeed) | X: alien easter egg (plain credit) | n/a | n/a | n/a | X posted (3rd X post of Nov 23; daily cap reached) |
