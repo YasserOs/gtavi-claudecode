@@ -42,3 +42,4 @@
 | Nov 23 ~02:45 | Squeex (twitch.tv/squeex) | Squeex tries to evade the cops in GTA 6 (23 s, live stream Nov 19) | posted (plain-text credit; under review) | n/a | youtube.com/shorts/VlzfkT6CH_0 (public) |
 | Nov 23 ~03:10 | IShowSpeed (twitch.tv/ishowspeed) | X: alien easter egg (plain credit) | n/a | n/a | n/a | X posted (3rd X post of Nov 23; daily cap reached) |
 | Nov 23 ~03:40 | IShowSpeed (twitch.tv/ishowspeed) | IShowSpeed finds an alien in GTA 6 (19.5 s, easter egg; cut starts after a swear) | posted (plain-text credit; under review) | n/a | YouTube public (shorts/neHDT8ifarA) |
+| Nov 23 ~15:10 | CohhCarnage (twitch.tv/cohhcarnage) | CohhCarnage launches off a quad bike in GTA 6 (23 s, fill layout, re-encoded <10 MB for upload) | posted (plain-text credit; content check passed) | n/a | youtube.com/shorts/bUIPhuRlamE (public) |
