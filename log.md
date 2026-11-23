@@ -54,3 +54,4 @@
 | Nov 24 ~00:10 | Ironmouse (twitch.tv/ironmouse) | Ironmouse encounters the "Terminator" NPC in GTA 6 (25.8 s, category 7 terminator NPC; Twitch clip MotionlessConcernedVampirePogChamp-9EKiwDzKN0fAzH6-; fill layout, two 'oh fuck' swears muted at 12 s and 19 s, cut ends before heavier swearing; Wasted screen, no gore) | posted (plain-text credit; under review) | n/a | YouTube public (processing at log time) |
 | Nov 24 ~00:25 | xQc (twitch.tv/xqc) | X: biggest crash (tagged @xQc, verified handle) | n/a | n/a | n/a | X posted (1st X post of Nov 24) |
 | Nov 24 ~00:35 | CaseOh (twitch.tv/caseoh_) | X: BMX crash 'I think I permanently altered his looks' (tagged @CaseOh__, verified) | n/a | n/a | n/a | X posted (2nd X post of Nov 24) |
+| Nov 24 ~01:30 | Kai Cenat (twitch.tv/kaicenat) | X: rooftop chase (tagged @KaiCenat, verified) | n/a | n/a | n/a | X posted (3rd X post of Nov 24; daily cap reached) |
