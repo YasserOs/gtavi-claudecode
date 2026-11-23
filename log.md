@@ -43,3 +43,4 @@
 | Nov 23 ~03:10 | IShowSpeed (twitch.tv/ishowspeed) | X: alien easter egg (plain credit) | n/a | n/a | n/a | X posted (3rd X post of Nov 23; daily cap reached) |
 | Nov 23 ~03:40 | IShowSpeed (twitch.tv/ishowspeed) | IShowSpeed finds an alien in GTA 6 (19.5 s, easter egg; cut starts after a swear) | posted (plain-text credit; under review) | n/a | YouTube public (shorts/neHDT8ifarA) |
 | Nov 23 ~15:10 | CohhCarnage (twitch.tv/cohhcarnage) | CohhCarnage launches off a quad bike in GTA 6 (23 s, fill layout, re-encoded <10 MB for upload) | posted (plain-text credit; content check passed) | n/a | youtube.com/shorts/bUIPhuRlamE (public) |
+| Nov 23 ~15:35 | Kai Cenat (twitch.tv/kaicenat) | REPOST TEST: Kai Cenat tears down a house with an excavator (28 s, trimmed copy of YouTube Short VR8nzL85ATU, new caption; original TikTok post Nov 19 6:20 PM kept, 0 views; delete originals only after reposts gain views) | posted TikTok only (plain credit; under review) | n/a | n/a |
