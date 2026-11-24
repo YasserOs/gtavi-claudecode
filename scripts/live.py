@@ -16,7 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from common import job_dir, run, save_json, tool, ytdlp_base
 
-HYPE = re.compile(r"(?i:LMAO|KEKW|LOL|CLIP|HOLY|NO WAY)|\bW+\b|[💀😂🔥]")
+HYPE = re.compile(r"(?i:LMAO|KEKW|OMEGALUL|LULW|\bLUL\b|LOL|CLIP|HOLY|NO WAY|WTF|POGCHAMP|\bPOG\b|NOTLIKETHIS|AAAA|SCREAM)|\bW+\b|[💀😂🔥]")
 NOISE = re.compile(r"(?i)giveaway|\braid(ing|ed)?\b|\bbrb\b|be right back|ad break|sponsor|subscribe|discord\.gg|https?://|promo code|follow me")
 STOP = set("the a an and or to of is it in i you that this on for with was are be so but not my me we he she they what just like at as if do get".split())
 WORD = re.compile(r"[\w']{2,}|[💀😂🔥]")
@@ -141,8 +141,8 @@ class Recorder:
         cmd = [tool("ffmpeg"), "-y", "-loglevel", "warning"]
         for u in urls:
             cmd += ["-reconnect", "1", "-reconnect_streamed", "1", "-reconnect_delay_max", "5", "-i", u]
-        for i in range(len(urls)):
-            cmd += ["-map", str(i)]
+        for i in range(len(urls)):  # video and audio only: Twitch's timed-ID3 data track has jumping timestamps that kill the muxer
+            cmd += ["-map", f"{i}:v?", "-map", f"{i}:a?"]
         cmd += ["-c", "copy", "-t", str(int(minutes * 60)), "-f", "segment", "-segment_time", "60",
                 "-segment_format", "mpegts", "-reset_timestamps", "1", "-segment_list", str(self.csv),
                 "-segment_list_type", "csv", str(ld / "seg_%05d.ts")]
@@ -210,6 +210,7 @@ def main():
     ap.add_argument("--window", type=int, default=10); ap.add_argument("--baseline", type=int, default=300)
     ap.add_argument("--ratio", type=float, default=3); ap.add_argument("--min-msgs", type=int, default=8)
     ap.add_argument("--cooldown", type=float, default=45)
+    ap.add_argument("--keep", action="store_true", help="keep the raw 60 s segments after the run (about 25 MB per minute; default: delete them, the spike clips stay)")
     ap.add_argument("--lag", type=float, default=8, help="seconds to shift the clip later: stream delay + chat reaction time")
     a = ap.parse_args()
 
@@ -248,6 +249,18 @@ def main():
         num, wall, rate, words = item
         out = ld / f"spike_{num}.mp4"
         center, ok = cut(rec, wall, a.before, a.after, a.lag, out)
+        if ok:  # drop ad breaks and UI-only screens right away (see scripts/screen.py)
+            try:
+                from screen import screen as _screen
+                fl = _screen(out)["flags"]
+                if "AD" in fl or "STATIC" in fl or "DARK" in fl:
+                    out.unlink(missing_ok=True)
+                    print(f"dropped spike {num} ({','.join(fl)})", flush=True)
+                    return
+                if fl:
+                    print(f"spike {num} flags: {','.join(fl)} (check frames)", flush=True)
+            except Exception as ex:
+                print(f"screen failed: {ex}", flush=True)
         iso = datetime.fromtimestamp(wall, timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
         off = "-" if center is None else f"{int(center // 60)}:{int(center % 60):02d}"
         row = f"| {iso} | {off} | {rate} | {', '.join(words)} | {out.name if ok else 'CUT FAILED'} |\n"
@@ -291,6 +304,9 @@ def main():
         for p in pending:
             finish_one(p[:4], final=True)
         save_json(ld / "live.json", {"url": a.url, "spikes": spikes, "minutes": a.minutes})
+        if not a.keep:  # raw segments are huge; the spike clips are all we need
+            for f in ld.glob("seg_*.ts"):
+                f.unlink(missing_ok=True)
     print(f"done: {spikes} spike(s). See {spikes_md}")
 
 

@@ -9,7 +9,7 @@ Face on top, game below, a big title on the seam. The format of most viral GTA 6
 
 ## 1. Find the streamer (no Twitch account or key needed)
 
-`python "${CLAUDE_PLUGIN_ROOT}/scripts/streams.py" --query "gta 6"` lists the top live Grand Theft Auto VI streams on Twitch and YouTube, ranked by viewers. Pick a streamer who runs a clipping campaign (check `campaigns.md`), or one whose clips you have permission to post.
+`python "${CLAUDE_PLUGIN_ROOT}/scripts/streams.py" --query "gta 6"` lists the top live Grand Theft Auto VI streams on Twitch and YouTube, ranked by viewers. Pick a streamer with a big audience and a clear moment. A running clipping campaign is a bonus (check `campaigns.md`), not a requirement.
 
 ## 2. Get the moment
 
@@ -30,6 +30,6 @@ python "${CLAUDE_PLUGIN_ROOT}/scripts/cut.py" jobs/<id> --pick 1 --layout react 
 
 ## Rules
 
-- Clip a streamer only inside their campaign or with permission. Credit them in the post caption, not on the video.
+- Credit and @tag the streamer in the post caption, not on the video. A campaign is not required, but credit is not permission: if a streamer or their team asks for removal, take the clip down at once and log it in `takedowns.md`.
 - Titles describe what happened. Never invent a quote or an opinion.
 - Run `rule-check` before posting. No spoilers in the title during launch week.
